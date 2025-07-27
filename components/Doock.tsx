@@ -30,28 +30,7 @@ const Icons = {
       />
     </svg>
   ),
-//   x: (props: IconProps) => (
-//     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
-//       <title>X</title>
-//       <path
-//         fill="currentColor"
-//         d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"
-//       />
-//     </svg>
-//   ),
-//   youtube: (props: IconProps) => (
-//     <svg
-//       width="32px"
-//       height="32px"
-//       viewBox="0 0 32 32"
-//       fill="currentColor"
-//       xmlns="http://www.w3.org/2000/svg"
-//       {...props}
-//     >
-//       <title>youtube</title>
-//       <path d="M29.41,9.26a3.5,3.5,0,0,0-2.47-2.47C24.76,6.2,16,6.2,16,6.2s-8.76,0-10.94.59A3.5,3.5,0,0,0,2.59,9.26,36.13,36.13,0,0,0,2,16a36.13,36.13,0,0,0,.59,6.74,3.5,3.5,0,0,0,2.47,2.47C7.24,25.8,16,25.8,16,25.8s8.76,0,10.94-.59a3.5,3.5,0,0,0,2.47-2.47A36.13,36.13,0,0,0,30,16,36.13,36.13,0,0,0,29.41,9.26ZM13.2,20.2V11.8L20.47,16Z" />
-//     </svg>
-//   ),
+
   github: (props: IconProps) => (
     <svg viewBox="0 0 438.549 438.549" {...props}>
       <path
@@ -72,17 +51,17 @@ const DATA = {
     social: {
       GitHub: {
         name: "GitHub",
-        url: "#",
+        url: "https://github.com/openabir",
         icon: Icons.github,
       },
       LinkedIn: {
         name: "LinkedIn",
-        url: "#",
+        url: "https://www.linkedin.com/in/openabir/",
         icon: Icons.linkedin,
       },
       email: {
         name: "Send Email",
-        url: "#",
+        url: "mailto:heyyabir@gmail.com",
         icon: Icons.email,
       },
     },
@@ -92,9 +71,6 @@ const DATA = {
 export function Doock() {
   return (
     <div className="flex flex-col items-center justify-center">
-      {/* <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10">
-        Dock
-      </span> */}
       <TooltipProvider>
         <Dock direction="middle">
           {DATA.navbar.map((item) => (
