@@ -4,6 +4,7 @@ import { ThemeProvider } from '@/components/theme-provider'
 import { Ubuntu } from 'next/font/google';
 import "./globals.css";
 import { Navbar } from '@/components/Navbar';
+import { Doock } from '@/components/Doock';
 
 const ubuntu = Ubuntu({
   subsets: ['latin'],
@@ -36,6 +37,9 @@ export default function RootLayout({
           <Providers>
             <Navbar />
             {children}
+            <div className="flex justify-center fixed bottom-10 left-0 right-0">
+              <Doock />
+            </div>
           </Providers>
         </ThemeProvider>
       </body>
