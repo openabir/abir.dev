@@ -25,50 +25,50 @@
     -webkit-text-stroke-color: red;
   }
 
-  .ubuntu-light {
-  font-family: "Ubuntu", sans-serif;
+  .montserrat-light {
+  font-family: "Montserrat", sans-serif;
   font-weight: 300;
   font-style: normal;
   }
 
-  .ubuntu-regular {
-  font-family: "Ubuntu", sans-serif;
+  .montserrat-regular {
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
   font-style: normal;
   }
 
-  .ubuntu-medium {
-  font-family: "Ubuntu", sans-serif;
+  .montserrat-medium {
+  font-family: "Montserrat", sans-serif;
   font-weight: 500;
   font-style: normal;
   }
 
-  .ubuntu-bold {
-  font-family: "Ubuntu", sans-serif;
+  .montserrat-bold {
+  font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-style: normal;
   }
 
-  .ubuntu-light-italic {
-  font-family: "Ubuntu", sans-serif;
+  .montserrat-light-italic {
+  font-family: "Montserrat", sans-serif;
   font-weight: 300;
   font-style: italic;
   }
 
-  .ubuntu-regular-italic {
-  font-family: "Ubuntu", sans-serif;
+  .montserrat-regular-italic {
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
   font-style: italic;
   }
 
-  .ubuntu-medium-italic {
-  font-family: "Ubuntu", sans-serif;
+  .montserrat-medium-italic {
+  font-family: "Montserrat", sans-serif;
   font-weight: 500;
   font-style: italic;
   }
 
-  .ubuntu-bold-italic {
-  font-family: "Ubuntu", sans-serif;
+  .montserrat-bold-italic {
+  font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-style: italic;
   }
@@ -209,13 +209,54 @@
     100% { transform: rotate(0.0deg) }
   }
   /* 2. Style the emoji for animation */
-  .waving-hand:hover  {
+  .waving-hand:hover {
     /* Allows the transform to be applied */
     display: inline-block;
     /* Sets the pivot point for the rotation */
     transform-origin: 70% 70%;
     /* Apply the animation */
     animation: wave-animation 2s linear;
-    /* Make it interactive on its own */
-    cursor: pointer;
   }  
+
+
+  /* MAP MARKER PING ANIMATION */
+  @keyframes custom-ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.ping-slow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  background-color: #22c55e; /* Tailwind's sky-500 */
+  opacity: 0.75;
+  animation: custom-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  /* filter: blur(1px); */
+}
+
+/* Cloud animation */
+@keyframes cloudMove {
+  0% {
+    left: -256px; /* Start completely off-screen to the left */
+    opacity: 0;
+  }
+  5% {
+    opacity: 0.5;
+  }
+  95% {
+    opacity: 0.5;
+  }
+  100% {
+    left: 100%; /* End completely off-screen to the right */
+    opacity: 0;
+  }
+}
+
+.cloud-animation {
+  animation: cloudMove 20s linear infinite;
+}
+

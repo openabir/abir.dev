@@ -1,6 +1,13 @@
 "use client";
 
-import { CalendarIcon, HomeIcon, MailIcon, UserRound, FolderCode } from "lucide-react";
+import {
+  FileDown,
+  CalendarIcon,
+  HomeIcon,
+  MailIcon,
+  UserRound,
+  FolderCode,
+} from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -46,6 +53,7 @@ const DATA = {
     { href: "/", icon: HomeIcon, label: "Home" },
     { href: "/about", icon: UserRound, label: "About" },
     { href: "#", icon: FolderCode, label: "Projects" },
+    { href: "#", icon: FileDown, label: "Download Resume" },
   ],
   contact: {
     social: {
@@ -59,11 +67,11 @@ const DATA = {
         url: "https://www.linkedin.com/in/openabir/",
         icon: Icons.linkedin,
       },
-      email: {
-        name: "Send Email",
-        url: "mailto:heyyabir@gmail.com",
-        icon: Icons.email,
-      },
+      // email: {
+      //   name: "Send Email",
+      //   url: "mailto:heyyabir@gmail.com",
+      //   icon: Icons.email,
+      // },
     },
   },
 };
@@ -82,7 +90,7 @@ export function Doock() {
                     aria-label={item.label}
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),
-                      "size-12 rounded-full",
+                      "size-12 rounded-full"
                     )}
                   >
                     <item.icon className="size-4" />
@@ -104,7 +112,7 @@ export function Doock() {
                     aria-label={social.name}
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),
-                      "size-12 rounded-full",
+                      "size-12 rounded-full"
                     )}
                   >
                     <social.icon className="size-4" />
