@@ -1,15 +1,27 @@
-import React from 'react'
+import React from "react";
+import { ModeToggle } from "@/components/ModeToggle";
 
 export const Navbar = () => {
   return (
-    <>
-        <div className="bg-gray-100 text-2xl font-semibold p-3 text-center border-b border-gray-200 dark:bg-gray-900">
-          <span className="text-3xl font-bold">
-            <span className="text-violet-600">abir</span><span className="text-slate-600 dark:text-slate-300">.b</span>
-          </span>
-        </div>
+    <aside className="mb-10 tracking-tight ">
+      <div className="lg:sticky lg:top-20">
+        <nav className="relative flex items-center justify-between pt-8 md:relative md:overflow-auto">
+          <a href="#" className="pl-2 first:mr-auto">
+            <div className="hidden font-bold font-mono text-2xl sm:block">
+              AB1r B
+            </div>
+            <div>
+              <h1 className="block font-bold font-mono text-2xl sm:hidden">
+                AB
+              </h1>
+            </div>
+          </a>
 
-    </>
-
-  )
-}
+          <div className="flex items-center pr-2">
+            <ModeToggle />
+          </div>
+        </nav>
+      </div>
+    </aside>
+  );
+};

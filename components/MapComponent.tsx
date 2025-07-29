@@ -49,7 +49,7 @@ export default function MapComponent() {
   }, []);
 
   return (
-    <div ref={mapContainer} className="relative h-[200px] w-full overflow-hidden rounded-tr-lg rounded-tl-lg">
+    <div ref={mapContainer} className="relative h-[200px] w-full overflow-hidden rounded-tr-2xl rounded-tl-2xl">
       {/* Map layer */}
       <div className="absolute inset-0 z-0" />
 

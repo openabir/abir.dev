@@ -2,29 +2,18 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
+import ClickSpark from "@/components/ui/spark";
 
-
-// Components
-import { ThemeProvider } from "@/components/theme-provider";
-import { Providers } from "@/components/providers";
-import { Navbar } from "@/components/Navbar";
-import { Doock } from "@/components/Doock";
-
-// Load Montserrat font
 const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
   variable: "--font-montserrat",
-  display: "swap",
 });
 
-// Page metadata
 export const metadata: Metadata = {
   title: "openabir",
   description: "Made with ❤️ by Abir",
 };
 
-// Root layout component
 export default function RootLayout({
   children,
 }: {
@@ -32,20 +21,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={montserrat.className} suppressHydrationWarning>
-      <body>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          storageKey="theme"
-          disableTransitionOnChange
+      <body className="dark relative antialiased">
+        <ClickSpark
+          sparkColor="#22c55e"
+          sparkSize={10}
+          sparkRadius={15}
+          sparkCount={8}
+          duration={400}
         >
-          <Providers>
-            <Navbar />
+          <main className="relative z-20 mx-auto max-w-xl px-6">
             {children}
-            <div className="fixed bottom-10 left-0 right-0 flex justify-center"><Doock /></div>
-          </Providers>
-        </ThemeProvider>
+          </main>
+        </ClickSpark>
       </body>
     </html>
   );
