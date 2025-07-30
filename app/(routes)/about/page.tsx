@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import MapComponent from "@/components/MapComponent";
 import Profile from "@/components/Profile";
@@ -28,11 +29,19 @@ export default function About() {
           {/* TECH STACK ⬇️ */}
           <div className="opacity-100 transform-none">
             <TechGrid />
+            <Link
+              href="/tech-stack"
+              className="text-sm text-blue-500 hover:underline hover:text-blue-700 transition-colors duration-200"
+            >
+              more...
+            </Link>
           </div>
 
-          <div className=""></div>
+          <div className="h-100px">
+            <Footer />
+          </div>
         </section>
-       <div className="fixed bottom-5 left-0 right-0 flex justify-center z-999">
+        <div className="fixed bottom-5 left-0 right-0 flex justify-center z-999">
           <DockComponent />
         </div>
       </div>
