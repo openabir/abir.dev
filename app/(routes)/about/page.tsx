@@ -32,7 +32,7 @@ export default function About() {
 
           <div className=""></div>
         </section>
-=        <div className="fixed bottom-5 left-0 right-0 flex justify-center z-999">
+       <div className="fixed bottom-5 left-0 right-0 flex justify-center z-999">
           <DockComponent />
         </div>
       </div>

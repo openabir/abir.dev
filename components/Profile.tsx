@@ -1,45 +1,160 @@
-import React from "react";
+"use client";
 
+import { useState, useRef, useEffect, type MutableRefObject } from "react";
 import Image from "next/image";
 
-export default function Profile() {
+export default function Profile(): JSX.Element {
+  const [isImageSwapped, setIsImageSwapped] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const circleRef = useRef<SVGCircleElement | null>(null);
+  const svgRef = useRef<SVGSVGElement | null>(null);
+  const animationStartRef = useRef<number | null>(null);
+
+  const RING_DURATION = 1500;
+  const FADE_DURATION = 300;
+  const STROKE_TOTAL = 289.03;
+
+  const startRingAnimation = (reverse = false, elapsed = 0) => {
+    if (!circleRef.current || !svgRef.current) return;
+
+    const circle = circleRef.current;
+    const svg = svgRef.current;
+    const targetOffset = reverse ? STROKE_TOTAL : 0;
+    const duration = reverse ? elapsed : RING_DURATION;
+
+    // Reset opacity instantly
+    svg.style.transition = "none";
+    svg.style.opacity = "1";
+
+    if (reverse) {
+      const currentOffset = STROKE_TOTAL * (1 - elapsed / RING_DURATION);
+      circle.style.transition = "none";
+      circle.style.strokeDashoffset = currentOffset.toString();
+      void circle.getBoundingClientRect();
+    } else {
+      circle.style.transition = "none";
+      circle.style.strokeDashoffset = STROKE_TOTAL.toString();
+      void circle.getBoundingClientRect();
+    }
+
+    // Animate strokeDashoffset
+    circle.style.transition = `stroke-dashoffset ${duration}ms linear`;
+    circle.style.strokeDashoffset = targetOffset.toString();
+  };
+
+  const handleMouseEnter = (): void => {
+    if (isAnimating) return;
+    setIsAnimating(true);
+
+    startRingAnimation(false);
+    animationStartRef.current = performance.now();
+
+    timeoutRef.current = setTimeout(() => {
+      setIsImageSwapped((prev) => !prev);
+
+      // Fade out ring
+      if (svgRef.current) {
+        svgRef.current.style.transition = `opacity ${FADE_DURATION}ms ease`;
+        svgRef.current.style.opacity = "0";
+      }
+
+      // After fade-out, reset ring stroke
+      setTimeout(() => {
+        if (circleRef.current) {
+          circleRef.current.style.transition = "none";
+          circleRef.current.style.strokeDashoffset = STROKE_TOTAL.toString();
+        }
+        if (svgRef.current) {
+          svgRef.current.style.transition = "none";
+          svgRef.current.style.opacity = "1";
+        }
+        setIsAnimating(false);
+      }, FADE_DURATION);
+    }, RING_DURATION);
+  };
+
+  const handleMouseLeave = (): void => {
+    if (!isAnimating) return;
+
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+
+    const now = performance.now();
+    const start = animationStartRef.current;
+    if (start === null) {
+      setIsAnimating(false);
+      return;
+    }
+
+    const elapsed = Math.min(now - start, RING_DURATION);
+
+    startRingAnimation(true, elapsed);
+
+    setTimeout(() => {
+      setIsAnimating(false);
+    }, elapsed);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
+
   return (
     <>
       <div className="mb-5 mt-5 flex gap-5">
-        <div className="relative inline-block">
+        <div
+          className="relative inline-block"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           <div
-            className="pointer-events-none relative size-[70px] select-none hover:saturate-[70%]"
+            className="relative size-[70px] select-none"
             style={{ userSelect: "none" }}
           >
             <div className="absolute inset-1">
               <Image
-                className="size-full rounded-full bg-muted-foreground/30 object-cover ring-2 ring-muted-foreground/50 ring-offset-2 ring-offset-background dark:hidden"
+                className={`size-full rounded-full object-cover ring-2 ring-muted-foreground/50 ring-offset-2 ring-offset-background transition-opacity duration-500 ${
+                  isImageSwapped ? "opacity-0" : "opacity-100"
+                }`}
                 alt="Profile"
                 src="/images/profile.jpg"
                 fill
+                priority
               />
               <Image
-                className="hidden size-full rounded-full bg-muted-foreground object-cover ring-2 ring-muted-foreground/50 ring-offset-2 ring-offset-background dark:block"
-                alt="Profile"
+                className={`absolute top-0 left-0 size-full rounded-full object-cover ring-2 ring-muted-foreground/50 ring-offset-2 ring-offset-background transition-opacity duration-500 ${
+                  isImageSwapped ? "opacity-100" : "opacity-0"
+                }`}
+                alt="Alternate Profile"
                 src="/images/profile-alt.jpg"
                 fill
+                priority
               />
             </div>
+
             <svg
+              ref={svgRef}
               className="absolute inset-0 size-full"
               viewBox="0 0 100 100"
               style={{ transform: "rotate(-90deg)", opacity: 1 }}
             >
               <circle
-                className="stroke-emerald-500 dark:stroke-green-500"
+                ref={circleRef}
                 cx="50"
                 cy="50"
                 r="46"
                 fill="none"
                 strokeWidth="6"
                 strokeLinecap="round"
-                strokeDasharray="289.03"
-                strokeDashoffset="289.03"
+                strokeDasharray={STROKE_TOTAL}
+                strokeDashoffset={STROKE_TOTAL}
+                className="stroke-emerald-500 dark:stroke-green-500"
               />
             </svg>
           </div>
