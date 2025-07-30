@@ -36,7 +36,8 @@ const TechnologyCard: React.FC<TechnologyCardProps> = ({
       onMouseLeave={() => setHovered(false)}
       onClick={() => onToggle(id)}
       className={cn(
-        "group flex flex-col items-center justify-center gap-2 rounded-sm border px-2 py-3 text-center shadow-sm transition-colors cursor-pointer"
+        "group flex flex-col items-center justify-center gap-2 rounded-sm border text-center shadow-sm transition-colors cursor-pointer",
+        "px-4 py-5 md:px-2 md:py-3"
       )}
     >
       {Icon && (
@@ -49,7 +50,7 @@ const TechnologyCard: React.FC<TechnologyCardProps> = ({
           <Icon size={24} color={isSelected ? color : "#a1a1aa"} />
         </span>
       )}
-      <p className="text-[12px] text-zinc-400 leading-none group-data-[state=checked]:text-white">
+      <p className="hidden md:block text-[12px] text-zinc-400 leading-none group-data-[state=checked]:text-white">
         {name}
       </p>
     </div>
@@ -58,9 +59,7 @@ const TechnologyCard: React.FC<TechnologyCardProps> = ({
 
 // Main Grid
 export default function TechGrid() {
-  const [selected, setSelected] = useState<Set<IconId>>(
-    new Set()
-  );
+  const [selected, setSelected] = useState<Set<IconId>>(new Set());
 
   const toggleSelection = (id: IconId) => {
     setSelected((prev) => {
@@ -71,15 +70,15 @@ export default function TechGrid() {
   };
 
   return (
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 select-none">
-          {technologies.map((tech) => (
-            <TechnologyCard
-              key={tech.id}
-              {...tech}
-              isSelected={selected.has(tech.id)}
-              onToggle={toggleSelection}
-            />
-          ))}
-        </div>
+    <div className="grid grid-cols-4 sm:grid-cols-4 gap-2 select-none">
+      {technologies.map((tech) => (
+        <TechnologyCard
+          key={tech.id}
+          {...tech}
+          isSelected={selected.has(tech.id)}
+          onToggle={toggleSelection}
+        />
+      ))}
+    </div>
   );
 }

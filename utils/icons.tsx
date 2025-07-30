@@ -181,7 +181,7 @@ export interface Technology {
 
 // Data for our grid items, typed with the Technology interface
 export const technologies: Technology[] = [
-  { id: "html", name: "HTML 5", color: "#E34F26" },
+  { id: "html", name: "HTML", color: "#E34F26" },
   { id: "css", name: "CSS", color: "#663399" },
   { id: "typescript", name: "TypeScript", color: "#3178C6" },
   { id: "nextjs", name: "Next.js", color: "#ffffff" },
