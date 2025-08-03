@@ -16,7 +16,7 @@ export default function MapComponent() {
     map.current = new maplibregl.Map({
       container: mapContainer.current,
       style:
-        "https://api.maptiler.com/maps/streets/style.json?key=8UDx6ldtoonNYL6fflPA",
+        "https://api.maptiler.com/maps/streets/style.json?key=#{process.env.NEXT_PUBLIC_MAPTILER_API_KEY}",
       center: [88.486738, 22.719253],
       zoom: 14,
       attributionControl: false,
@@ -49,7 +49,10 @@ export default function MapComponent() {
   }, []);
 
   return (
-    <div ref={mapContainer} className="relative h-[200px] w-full overflow-hidden rounded-tr-2xl rounded-tl-2xl">
+    <div
+      ref={mapContainer}
+      className="relative h-[200px] w-full overflow-hidden rounded-tr-2xl rounded-tl-2xl"
+    >
       {/* Map layer */}
       <div className="absolute inset-0 z-0" />
 
