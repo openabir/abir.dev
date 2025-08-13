@@ -3,6 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import ClickSpark from "@/components/ui/spark";
+import { Particles } from "@/components/ui/Particles";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -33,6 +34,12 @@ export default function RootLayout({
             {children}
           </main>
         </ClickSpark>
+        <Particles
+          className="absolute inset-0 z-[-1]"
+          quantity={100}
+          ease={80}
+          refresh
+        />
       </body>
     </html>
   );

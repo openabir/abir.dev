@@ -1,7 +1,11 @@
 "use client";
 
-import { useState, useRef, useEffect, type MutableRefObject } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
+import { socialLinks } from "@/lib/social-links";
+import SocialLink from "@/components/SocialLink";
+import ProfileName from "@/components/ui/ProfileName";
+
 
 export default function Profile(): JSX.Element {
   const [isImageSwapped, setIsImageSwapped] = useState(false);
@@ -160,12 +164,7 @@ export default function Profile(): JSX.Element {
           </div>
         </div>
         <div className="space-y-2">
-          <h1 className="font-semibold text-xl tracking-tighter sm:text-2xl">
-            Hey, I&apos;m OpenAbir (Abir Biswas)
-            <span className="ml-1 inline-block origin-buttom-right waving-hand">
-              👋
-            </span>
-          </h1>
+          <ProfileName name="Abir Biswas" />
 
           <a
             href="mailto:heyyabir@gmail.com"
@@ -197,6 +196,16 @@ export default function Profile(): JSX.Element {
                   </svg>
                 </span>
               </p>
+            </div>
+            <div className="flex flex-wrap ml-18 gap-6 overflow-x-auto">
+              {socialLinks.map((link) => (
+                <SocialLink
+                  key={link.name}
+                  href={link.href}
+                  name={link.name}
+                  icon={link.icon}
+                />
+              ))}
             </div>
           </a>
         </div>
