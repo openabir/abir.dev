@@ -114,7 +114,7 @@
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
+  --accent: #262626;
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
@@ -149,26 +149,25 @@
 }
 
   /* WAVING ANIMATION */
-  /* 1. Define the animation keyframes */
-  @keyframes wave-animation {
-    0% { transform: rotate(0.0deg) }
-    10% { transform: rotate(14.0deg) }
-    20% { transform: rotate(-8.0deg) }
-    30% { transform: rotate(14.0deg) }
-    40% { transform: rotate(-4.0deg) }
-    50% { transform: rotate(10.0deg) }
-    60% { transform: rotate(0.0deg) }
-    100% { transform: rotate(0.0deg) }
-  }
-  /* 2. Style the emoji for animation */
-  .waving-hand:hover {
-    /* Allows the transform to be applied */
-    display: inline-block;
-    /* Sets the pivot point for the rotation */
-    transform-origin: 70% 70%;
-    /* Apply the animation */
-    animation: wave-animation 2s linear;
-  }  
+.wave {
+  display: inline-block;
+  transform-origin: 70% 70%;
+}
+
+.wave:hover {
+  animation: wave-animation 2.5s;
+}
+
+@keyframes wave-animation {
+   0% { transform: rotate( 0.0deg) }
+  10% { transform: rotate(14.0deg) }
+  20% { transform: rotate(-8.0deg) }
+  30% { transform: rotate(14.0deg) }
+  40% { transform: rotate(-4.0deg) }
+  50% { transform: rotate(10.0deg) }
+  60% { transform: rotate( 0.0deg) }
+ 100% { transform: rotate( 0.0deg) }
+}  
 
 
   /* MAP MARKER PING ANIMATION */
