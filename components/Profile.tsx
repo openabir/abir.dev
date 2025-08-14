@@ -2,12 +2,10 @@
 
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import { socialLinks } from "@/lib/social-links";
-import SocialLink from "@/components/SocialLink";
 import ProfileName from "@/components/ui/ProfileName";
 
 
-export default function Profile(): JSX.Element {
+export default function Profile() {
   const [isImageSwapped, setIsImageSwapped] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -196,16 +194,6 @@ export default function Profile(): JSX.Element {
                   </svg>
                 </span>
               </p>
-            </div>
-            <div className="flex flex-wrap ml-18 gap-6 overflow-x-auto">
-              {socialLinks.map((link) => (
-                <SocialLink
-                  key={link.name}
-                  href={link.href}
-                  name={link.name}
-                  icon={link.icon}
-                />
-              ))}
             </div>
           </a>
         </div>
