@@ -5,7 +5,7 @@ import { ICONS } from "../lib/icons";
 
 export const Navbar = () => {
   return (
-    <header className="flex justify-between items-center mb-5 mt-5">
+    <header className="flex justify-between items-center mb-10 mt-5">
       <Link href="/">
         <span className="hidden font-bold font-mono text-2xl sm:block">
           A8IR
