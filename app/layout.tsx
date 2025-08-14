@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import ClickSpark from "@/components/ui/spark";
 import { Particles } from "@/components/ui/Particles";
+import Aura from "@/components/aura";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -22,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={montserrat.className} suppressHydrationWarning>
-      <body className="dark relative antialiased">
+      <body className="dark antialiased">
         <ClickSpark
           sparkColor="#22c55e"
           sparkSize={10}
@@ -30,7 +31,8 @@ export default function RootLayout({
           sparkCount={8}
           duration={400}
         >
-          <main className="relative z-20 mx-auto max-w-xl px-6">
+          <Aura />
+          <main className="relative z-20 mx-auto max-w-2xl px-6">
             {children}
           </main>
         </ClickSpark>

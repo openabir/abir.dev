@@ -9,9 +9,9 @@ import TechGrid from "@/components/TechGrid";
 import Footer from "@/components/Footer";
 
 export default function About() {
-  return (
-    <main className="container bg-[#0a0a0a] px-4">
-      <Navbar />
+  return (<>
+    <Navbar />
+    <main className="container bg-[#0a0a0a]">
       <MapComponent />
       <Profile />
       <AboutText />
@@ -22,5 +22,6 @@ export default function About() {
       </div>
       <Footer />
     </main>
+  </>
   );
 }
