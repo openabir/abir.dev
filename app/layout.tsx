@@ -1,14 +1,14 @@
 import "./globals.css";
 
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Work_Sans } from "next/font/google";
 import ClickSpark from "@/components/ui/spark";
 import { Particles } from "@/components/ui/Particles";
 import Aura from "@/components/aura";
 
-const montserrat = Montserrat({
+const workSans = Work_Sans({
   subsets: ["latin"],
-  variable: "--font-montserrat",
+  variable: "--font-work-sans",
 });
 
 export const metadata: Metadata = {
@@ -22,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={montserrat.className} suppressHydrationWarning>
+    <html lang="en" className={workSans.className} suppressHydrationWarning>
       <body className="dark antialiased">
         <ClickSpark
           sparkColor="#22c55e"

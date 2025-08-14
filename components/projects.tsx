@@ -29,44 +29,42 @@ const projectsData = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-16 md:py-24">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-          My Projects
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projectsData.map((project, index) => (
-            <div
-              key={index}
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden group transform hover:scale-105 transition-transform duration-300"
-            >
-              <div className="relative h-56 w-full">
-                <Image
-                  src={project.imageUrl}
-                  alt={project.title}
-                  layout="fill"
-                  objectFit="cover"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  {project.description}
-                </p>
-                <a
-                  href={project.projectUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-500 hover:text-blue-600 font-semibold inline-flex items-center"
-                >
-                  View Project <ArrowUpRight className="ml-1 h-4 w-4" />
-                </a>
-              </div>
+    <>
+      <h2 className="text-left mt-12 mb-2 text-accent-foreground">
+        My Projects
+      </h2>
+      <div className="grid grid-cols-1 gap-8">
+        {projectsData.map((project, index) => (
+          <div
+            key={index}
+            className="bg-white dark:bg-[#0a0a0a] rounded-lg shadow-lg overflow-hidden group transform hover:scale-105 transition-transform duration-300 border-2 p-6"
+          >
+            <div className="relative h-56 w-full">
+              <Image
+                src={project.imageUrl}
+                alt={project.title}
+                layout="fill"
+                objectFit="cover"
+              />
             </div>
-          ))}
-        </div>
+            <div className="p-6">
+              <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
+                {project.description}
+              </p>
+              <a
+                href={project.projectUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 hover:text-blue-600 font-semibold inline-flex items-center"
+              >
+                View Project <ArrowUpRight className="ml-1 h-4 w-4" />
+              </a>
+            </div>
+          </div>
+        ))}
       </div>
-    </section>
+    </>
   );
 };
 
