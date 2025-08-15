@@ -24,7 +24,7 @@ const Aura: React.FC = () => {
         "rgba(45, 212, 191, 0.05)", // Back to Green
       ],
       {
-        duration: 16,
+        duration: 12,
         repeat: Infinity,
         repeatType: "loop",
         ease: "linear",
@@ -38,7 +38,7 @@ const Aura: React.FC = () => {
   // Adjusted the gradient to be more gradual for smoother edges
   const backgroundImage = useTransform(
     color,
-    (c) => `linear-gradient(to bottom, ${c} 0%, transparent 40%)`
+    (c) => `linear-gradient(to bottom, ${c} 0%, transparent 100%)`
   );
 
   return (
@@ -57,7 +57,7 @@ const Aura: React.FC = () => {
         }}
       />
       {/* Increased blur for an even softer effect */}
-      <div className="absolute inset-0 backdrop-filter backdrop-blur-[120px]" />
+      <div className="absolute inset-0 backdrop-filter backdrop-blur-[9999px]" />
     </motion.div>
   );
 };

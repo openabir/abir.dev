@@ -22,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={workSans.className} suppressHydrationWarning>
+    <html lang="en" className={workSans.variable} suppressHydrationWarning>
       <body className="dark antialiased">
         <ClickSpark
           sparkColor="#22c55e"
@@ -31,15 +31,17 @@ export default function RootLayout({
           sparkCount={8}
           duration={400}
         >
-          <Aura />
           <main className="relative z-20 mx-auto max-w-2xl px-6">
+            {" "}
+            <Aura />
             {children}
           </main>
         </ClickSpark>
         <Particles
           className="absolute inset-0 z-[-1]"
-          quantity={100}
-          ease={80}
+          quantity={30}
+          ease={100}
+          staticity={80}
           refresh
         />
       </body>
